@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://kjbw8mkqmlsu"]
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
