@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://kjbw8mkqmlsu"]
+[gd_scene load_steps=7 format=3 uid="uid://kjbw8mkqmlsu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_7wps1"]
 [ext_resource type="PackedScene" uid="uid://fbjr3j7dw287" path="res://player.tscn" id="2_a6n4o"]
 [ext_resource type="PackedScene" uid="uid://cam3trrw20udr" path="res://spikes.tscn" id="3_g7oe7"]
+[ext_resource type="PackedScene" uid="uid://danhk1k055eml" path="res://heart.tscn" id="4_dfa6l"]
+[ext_resource type="PackedScene" uid="uid://6yj2ohv4q2io" path="res://level_completed.tscn" id="5_ucroe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my08v"]
 size = Vector2(24, 79.996)
@@ -21,7 +23,7 @@ polygon = PackedVector2Array(0, 0, 24, 0, 24, 88, 47.9724, 88.015, 71.9624, 120.
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_a6n4o")]
-position = Vector2(40, 72)
+position = Vector2(40.0295, 87.9866)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_mask = 0
@@ -35,6 +37,7 @@ offset_left = 232.0
 offset_top = -0.0779009
 offset_right = 256.0
 offset_bottom = 79.9221
+metadata/_edit_use_anchors_ = true
 
 [node name="Spikes" parent="." instance=ExtResource("3_g7oe7")]
 position = Vector2(168.051, 151.944)
@@ -47,3 +50,17 @@ position = Vector2(272.046, 135.909)
 
 [node name="Spikes4" parent="." instance=ExtResource("3_g7oe7")]
 position = Vector2(256.046, 135.914)
+
+[node name="Heart" parent="." instance=ExtResource("4_dfa6l")]
+position = Vector2(168.016, 47.9436)
+
+[node name="Heart2" parent="." instance=ExtResource("4_dfa6l")]
+position = Vector2(303.995, -16.1021)
+
+[node name="Heart3" parent="." instance=ExtResource("4_dfa6l")]
+position = Vector2(244.995, -16.0823)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelCompleted" parent="CanvasLayer" instance=ExtResource("5_ucroe")]
+visible = false
