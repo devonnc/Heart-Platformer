@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://fbjr3j7dw287"]
+[gd_scene load_steps=15 format=3 uid="uid://fbjr3j7dw287"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b08ib"]
-[ext_resource type="Resource" uid="uid://bjcqf6rvyg0e" path="res://FasterMovementData.tres" id="2_a0urb"]
 [ext_resource type="Texture2D" uid="uid://cgpmphm7nejls" path="res://player.png" id="2_dy02s"]
+[ext_resource type="Resource" uid="uid://bow7ygj4kw33s" path="res://DefaultMovementData.tres" id="2_t12px"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2n2u"]
 atlas = ExtResource("2_dy02s")
@@ -81,11 +81,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xrvc"]
 size = Vector2(8, 15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51mxp"]
+size = Vector2(6, 13)
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 floor_constant_speed = true
 floor_snap_length = 2.0
 script = ExtResource("1_b08ib")
-movement_data = ExtResource("2_a0urb")
+movement_data = ExtResource("2_t12px")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -10)
@@ -104,3 +108,15 @@ one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -32)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="HazardDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_51mxp")
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]

@@ -1,19 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://kjbw8mkqmlsu"]
+[gd_scene load_steps=5 format=3 uid="uid://kjbw8mkqmlsu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_7wps1"]
 [ext_resource type="PackedScene" uid="uid://fbjr3j7dw287" path="res://player.tscn" id="2_a6n4o"]
+[ext_resource type="PackedScene" uid="uid://cam3trrw20udr" path="res://spikes.tscn" id="3_g7oe7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_my08v"]
-size = Vector2(24, 80)
+size = Vector2(24, 79.996)
 
 [node name="World" type="Node2D"]
+rotation = 0.000335779
 script = ExtResource("1_7wps1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 rotation = -0.000313466
-polygon = PackedVector2Array(0, 0, 24, 0, 24, 88, 47.9724, 88.015, 71.9624, 120.023, 95.9624, 120.03, 143.972, 88.0451, 143.952, 152.045, 184, 160, 208, 136, 247.952, 152.078, 255.955, 144.08, 287.957, 136.09, 287.982, 56.0903, 288, 0.0902782, 320, 0.100309, 320, 184, -0.0576777, 184)
+polygon = PackedVector2Array(0, 0, 24, 0, 24, 88, 47.9724, 88.015, 71.9624, 120.023, 95.9624, 120.03, 143.972, 88.0451, 143.952, 152.045, 184.003, 151.996, 208.003, 127.995, 248.003, 143.994, 256.003, 135.994, 287.957, 136.09, 287.982, 56.0903, 288, 0.0902782, 320, 0.100309, 320, 184, -0.0576777, 184)
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
 
@@ -21,13 +24,26 @@ polygon = PackedVector2Array(0, 0, 24, 0, 24, 88, 47.9724, 88.015, 71.9624, 120.
 position = Vector2(40, 72)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(228, 64)
+position = Vector2(244.013, 39.9167)
 shape = SubResource("RectangleShape2D_my08v")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
-offset_left = 216.0
-offset_top = 24.0
-offset_right = 240.0
-offset_bottom = 104.0
+offset_left = 232.0
+offset_top = -0.0779009
+offset_right = 256.0
+offset_bottom = 79.9221
+
+[node name="Spikes" parent="." instance=ExtResource("3_g7oe7")]
+position = Vector2(168.051, 151.944)
+
+[node name="Spikes2" parent="." instance=ExtResource("3_g7oe7")]
+position = Vector2(152.051, 151.949)
+
+[node name="Spikes3" parent="." instance=ExtResource("3_g7oe7")]
+position = Vector2(272.046, 135.909)
+
+[node name="Spikes4" parent="." instance=ExtResource("3_g7oe7")]
+position = Vector2(256.046, 135.914)
